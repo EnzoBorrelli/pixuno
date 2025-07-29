@@ -1,8 +1,9 @@
 import { Container, Graphics } from "@pixi/react";
 import { iDeck } from "~/interfaces/game";
 import Card from "./card";
+import DeckLabel from "./deckLabel";
 
-export default function Deck({ coords, id, cards, angle }: iDeck) {
+export default function Deck({ position, id, cards, angle }: iDeck) {
   const CARD_WIDTH = 64;
   const DECK_WIDTH = 400;
   const cardCount = cards.length;
@@ -19,7 +20,7 @@ export default function Deck({ coords, id, cards, angle }: iDeck) {
   const cardOrigin = (DECK_WIDTH - spreadWidth) / 2;
 
   return (
-    <Container x={coords.x} y={coords.y} angle={angle} interactive={true}>
+    <Container x={position.x} y={position.y} angle={angle} interactive={true}>
       <Graphics
         draw={(g) => {
           g.clear();
@@ -32,13 +33,16 @@ export default function Deck({ coords, id, cards, angle }: iDeck) {
       />
       {cards.map((card, index) => (
         <Card
+          id={card.id}
           key={index}
           coords={{ x: cardOrigin + index * spacing, y: 0 }}
           type={card.type}
           color={card.color}
           isFlipped={card.isFlipped}
+          deckID={id}
         />
       ))}
+      <DeckLabel text={id} />
     </Container>
   );
 }
