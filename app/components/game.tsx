@@ -1,33 +1,9 @@
 import { Stage } from "@pixi/react";
 import Deck from "./deck";
-import { CARD_COLOR, CARD_TYPE } from "~/enums/cards";
+import { CardDeckExample, RivalCardDeckExample } from "~/utils/cardDeckExample";
+import CentralDeck from "./centralDeck";
 
-const cards = [
-  {
-    coords : {x:0,y:0},
-    type: CARD_TYPE.BLOCK,
-    color: CARD_COLOR.GREEN,
-    isFlipped: false,
-  },
-  {
-    coords : {x:20,y:0},
-    type: CARD_TYPE.BLOCK,
-    color: CARD_COLOR.RED,
-    isFlipped: false,
-  },
-  {
-    coords : {x:40,y:0},
-    type: CARD_TYPE.BLOCK,
-    color: CARD_COLOR.BLUE,
-    isFlipped: false,
-  },
-  {
-    coords : {x:60,y:0},
-    type: CARD_TYPE.BLOCK,
-    color: CARD_COLOR.YELLOW,
-    isFlipped: false,
-  },
-]
+
 
 export default function Game() {
   return (
@@ -40,7 +16,11 @@ export default function Game() {
         autoDensity: true,
       }}
     >
-      <Deck coords={{x:100,y:100}} id="si" cards={cards}/> 
+      <Deck coords={{x:200,y:450}} id="player1" cards={CardDeckExample}/> 
+      <Deck coords={{x:150,y:100}} id="player1" cards={RivalCardDeckExample} angle={90}/> 
+      <Deck coords={{x:650,y:500}} id="player1" cards={RivalCardDeckExample} angle={270}/> 
+      <Deck coords={{x:600,y:150}} id="player1" cards={RivalCardDeckExample} angle={180}/> 
+      <CentralDeck coords={{x:340,y:240}} id="player1" cards={CardDeckExample}/> 
     </Stage>
   );
 }
