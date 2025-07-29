@@ -6,6 +6,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import 'typeface-vt323';
+
 
 import "./tailwind.css";
 import { Provider } from "react-redux";
