@@ -1,9 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { exampleReducer } from "./exampleSlice";
+import {
+  aiLeftReducer,
+  aiRightReducer,
+  aiUpReducer,
+  discardReducer,
+  pickupReducer,
+  playerReducer,
+} from "./deckSlices";
 
 export const store = configureStore({
   reducer: {
-    example: exampleReducer,
+    player: playerReducer,
+    aiLeft: aiLeftReducer,
+    aiUp: aiUpReducer,
+    aiRight: aiRightReducer,
+    discard: discardReducer,
+    pickup: pickupReducer,
   },
 });
 
