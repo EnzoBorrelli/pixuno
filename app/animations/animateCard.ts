@@ -81,7 +81,7 @@ function Hover() {
 
   useEffect(() => {
     if(hover){
-      soundPlayer.PlaySound({folder:"cards",audio:"pick"})
+      soundPlayer.PlaySound({folder:"cards",audio:"pick",useCache:true});
     }
     if (tweenRef.current) {
       tweenRef.current.kill();
