@@ -2,6 +2,7 @@ import { Texture } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
 import { CARD_COLOR, CARD_TYPE } from "~/enums/cards";
 import gsap from "gsap";
+import soundPlayer from "~/utils/soundPlayer";
 
 enum ANIM_PHASES {
   SHRINK = "shrink",
@@ -79,11 +80,14 @@ function Hover() {
   const tweenRef = useRef<gsap.core.Tween | null>(null);
 
   useEffect(() => {
+    if(hover){
+      soundPlayer.PlaySound({folder:"cards",audio:"pick"})
+    }
     if (tweenRef.current) {
       tweenRef.current.kill();
     }
     tweenRef.current = gsap.to(y.current, {
-      value: hover ? -20 : 0,
+      value: hover ? -30 : 0,
       duration: 0.2,
       ease: "power2.out",
       onUpdate: () => {
