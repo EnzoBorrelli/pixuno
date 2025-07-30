@@ -1,22 +1,22 @@
 import { DECK_ANGLE, DECK_POSITION } from "~/enums/decks";
 import createDeckSlice from "./deckSliceFactory";
 
-const playerDeckSlice = createDeckSlice(
+const playerHandSlice = createDeckSlice(
   "player",
   DECK_POSITION.PLAYER,
   DECK_ANGLE.PLAYER
 );
-const aiLeftDeckSlice = createDeckSlice(
+const aiLeftHandSlice = createDeckSlice(
   "aiLeft",
   DECK_POSITION.AI_LEFT,
   DECK_ANGLE.AI_LEFT
 );
-const aiUpDeckSlice = createDeckSlice(
+const aiUpHandSlice = createDeckSlice(
   "aiUp",
   DECK_POSITION.AI_UP,
   DECK_ANGLE.AI_UP
 );
-const aiRightDeckSlice = createDeckSlice(
+const aiRightHandSlice = createDeckSlice(
   "aiRight",
   DECK_POSITION.AI_RIGHT,
   DECK_ANGLE.AI_RIGHT
@@ -34,18 +34,18 @@ const pickupDeckSlice = createDeckSlice(
 
 //actions
 
-export const playerActions = playerDeckSlice.actions;
-export const aiLeftActions = aiLeftDeckSlice.actions;
-export const aiUpActions = aiUpDeckSlice.actions;
-export const aiRightActions = aiRightDeckSlice.actions;
+export const playerActions = playerHandSlice.actions;
+export const aiLeftActions = aiLeftHandSlice.actions;
+export const aiUpActions = aiUpHandSlice.actions;
+export const aiRightActions = aiRightHandSlice.actions;
 export const discardActions = discardDeckSlice.actions;
 export const pickupActions = pickupDeckSlice.actions;
 
 //reducers
 
-export const playerReducer = playerDeckSlice.reducer;
-export const aiLeftReducer = aiLeftDeckSlice.reducer;
-export const aiUpReducer = aiUpDeckSlice.reducer;
-export const aiRightReducer = aiRightDeckSlice.reducer;
+export const playerReducer = playerHandSlice.reducer;
+export const aiLeftReducer = aiLeftHandSlice.reducer;
+export const aiUpReducer = aiUpHandSlice.reducer;
+export const aiRightReducer = aiRightHandSlice.reducer;
 export const discardReducer = discardDeckSlice.reducer;
 export const pickupReducer = pickupDeckSlice.reducer;
