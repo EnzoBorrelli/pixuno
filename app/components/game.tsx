@@ -1,10 +1,12 @@
 import { Stage, TilingSprite } from "@pixi/react";
 import Deck from "./deck";
-import { CardDeckExample, RivalCardDeckExample } from "~/utils/cardDeckExample";
 import DiscardDeck from "./discardDeck";
 import PickupDeck from "./pickupDeck";
 import { useSelector } from "react-redux";
 import { RootState } from "~/store";
+import { createDeck } from "~/scripts/decks/createDeck";
+import { shuffleDeck } from "~/scripts/decks/shuffleDeck";
+import { dealCards } from "~/scripts/decks/dealCards";
 
 export default function Game() {
   const player = useSelector((state: RootState) => state.player);
@@ -13,6 +15,9 @@ export default function Game() {
   const aiRight = useSelector((state: RootState) => state.aiRight);
   const discard = useSelector((state: RootState) => state.discard);
   const pickup = useSelector((state: RootState) => state.pickup);
+
+  const deck = shuffleDeck(createDeck());
+  const { hands, drawPile, discardPile } = dealCards(deck, 4);
   return (
     <Stage
       width={800}
@@ -29,37 +34,32 @@ export default function Game() {
         width={800}
         height={600}
         alpha={0.6}
-        
       />
-      <Deck position={player.position} id={player.id} cards={CardDeckExample} />
+      <Deck position={player.position} id={player.id} cards={hands[0]} />
       <Deck
         position={aiLeft.position}
         id={aiLeft.id}
-        cards={RivalCardDeckExample}
+        cards={hands[1]}
         angle={aiLeft.angle}
       />
       <Deck
         position={aiUp.position}
         id={aiUp.id}
-        cards={RivalCardDeckExample}
+        cards={hands[2]}
         angle={aiUp.angle}
       />
       <Deck
         position={aiRight.position}
         id={aiRight.id}
-        cards={RivalCardDeckExample}
+        cards={hands[3]}
         angle={aiRight.angle}
       />
       <DiscardDeck
         position={discard.position}
         id={discard.id}
-        cards={CardDeckExample}
+        cards={discardPile}
       />
-      <PickupDeck
-        position={pickup.position}
-        id={pickup.id}
-        cards={RivalCardDeckExample}
-      />
+      <PickupDeck position={pickup.position} id={pickup.id} cards={drawPile} />
     </Stage>
   );
 }
