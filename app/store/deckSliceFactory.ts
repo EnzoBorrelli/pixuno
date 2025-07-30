@@ -34,6 +34,9 @@ const createDeckSlice = (
           state.cards[index].coords = newCoords;
         }
       },
+      setDeck: (state, action) => {
+        state.cards = action.payload;
+      },
       clearDeck: (state) => {
         state.cards = [];
       },
