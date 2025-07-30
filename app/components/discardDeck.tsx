@@ -23,7 +23,7 @@ export default function DiscardDeck({ position, cards,id }: iDeck) {
           angle={index}
           type={card.type}
           color={card.color}
-          isFlipped={card.isFlipped}
+          isFlipped={false}
           deckID={id}
         />
       ))}
