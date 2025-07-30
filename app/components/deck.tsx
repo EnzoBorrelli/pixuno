@@ -38,7 +38,7 @@ export default function Deck({ position, id, cards, angle }: iDeck) {
           coords={{ x: cardOrigin + index * spacing, y: 0 }}
           type={card.type}
           color={card.color}
-          isFlipped={card.isFlipped}
+          isFlipped={id==="player"? !card.isFlipped :card.isFlipped}
           deckID={id}
         />
       ))}
