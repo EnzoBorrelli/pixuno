@@ -7,6 +7,7 @@ import {
   pickupReducer,
   playerReducer,
 } from "./deckSlices";
+import { gameReducer } from "./gameSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     aiRight: aiRightReducer,
     discard: discardReducer,
     pickup: pickupReducer,
+    game:gameReducer
   },
 });
 
